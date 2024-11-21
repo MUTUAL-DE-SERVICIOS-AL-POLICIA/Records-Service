@@ -4,17 +4,31 @@ import * as joi from 'joi';
 interface EnvVars {
   PORT: number;
   NATS_SERVERS: string[];
-  DB_TEST_PASSWORD: string;
-  DB_TEST_NAME: string;
-  DB_TEST_HOST: string;
-  DB_TEST_PORT: number;
-  DB_TEST_USERNAME: string;
+  DB_PASSWORD: string;
+  DB_DATABASE: string;
+  DB_HOST: string;
+  DB_PORT: number;
+  DB_USERNAME: string;
+  DB_AUTO_LOAD_ENTITIES: boolean;
+  DB_SYNCHRONIZE: boolean;
+  FTP_HOST: string;
+  FTP_USERNAME: string;
+  FTP_PASSWORD: string;
+  FTP_ROOT: string;
+  FTP_SSL: boolean;
 }
 
 const envsSchema = joi
   .object({
     PORT: joi.number().required(),
     NATS_SERVERS: joi.array().items(joi.string()).required(),
+    DB_PASSWORD: joi.string(),
+    DB_DATABASE: joi.string(),
+    DB_HOST: joi.string(),
+    DB_PORT: joi.number(),
+    DB_USERNAME: joi.string(),
+    DB_AUTO_LOAD_ENTITIES: joi.boolean().default(true),
+    DB_SYNCHRONIZE: joi.boolean().default(false),
   })
   .unknown(true);
 
@@ -29,12 +43,29 @@ if (error) {
 
 const envVars: EnvVars = value;
 
-export const envs = {
+export const PortEnvs = {
   port: envVars.PORT,
-  natsServers: envVars.NATS_SERVERS,
-  dbTestPassword: envVars.DB_TEST_PASSWORD,
-  dbTestName: envVars.DB_TEST_NAME,
-  dbTestHost: envVars.DB_TEST_HOST,
-  dbTestPort: envVars.DB_TEST_PORT,
-  dbTestUsername: envVars.DB_TEST_USERNAME,
 };
+//Configuración con el servidor
+export const NastEnvs = {
+  natsServers: envVars.NATS_SERVERS,
+};
+//Configuración con la base de datos principal
+export const DbEnvs = {
+  dbPassword: envVars.DB_PASSWORD,
+  dbDatabase: envVars.DB_DATABASE,
+  dbHost: envVars.DB_HOST,
+  dbPort: envVars.DB_PORT,
+  dbUsername: envVars.DB_USERNAME,
+  dbAutoLoadEntities: envVars.DB_AUTO_LOAD_ENTITIES,
+  dbSynchronize: envVars.DB_SYNCHRONIZE,
+};
+
+export const envsFtp = {
+  ftpHost: envVars.FTP_HOST,
+  ftpUsername: envVars.FTP_USERNAME,
+  ftpPassword: envVars.FTP_PASSWORD,
+  ftpRoot: envVars.FTP_ROOT,
+  ftpSsl: envVars.FTP_SSL,
+};
+
