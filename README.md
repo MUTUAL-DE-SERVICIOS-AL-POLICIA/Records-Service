@@ -1,6 +1,6 @@
-## Description
+## Descripción
 
-[Nest]Plantilla para crear nuevos proyectos enfocado a micro servicios.
+[Nest] Plantilla para crear nuevos proyectos enfocado a micro servicios.
 
 ## Clonar el repositorio y agregarle un nombre nuevo del nuevo proyecto
 
