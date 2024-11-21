@@ -5,7 +5,7 @@
 ## Clonar el repositorio y agregarle un nombre nuevo del nuevo proyecto
 
 ```bash
-git clone https://github.com/MUTUAL-DE-SERVICIOS-AL-POLICIA/template-microservice.git <nuevo_nombre_del_micro_servicio>
+git clone https://github.com/MUTUAL-DE-SERVICIOS-AL-POLICIA/template-microservice.git nombre_nuevo-microservice
 ```
 
 ## Inicializar proyecto
@@ -24,10 +24,13 @@ cp .env.example .env
 yarn install
 
 # Correr proyecto en modo desarrollo
-$ yarn run start:dev
+yarn run start:dev
+
+# Crear nuevo Modulo
+nest g res nombreModulo
 
 # Para enlazar a un nuevo repositorio
-git remote add origin https://github.com/tu-usuario/{nombre_del_repositorio}.git
+git remote add origin https://github.com/tu-usuario/{nombre_nuevo-microservice}.git
 git add .
 git commit -m "Inicialización del nuevo proyecto"
 git branch -M main
