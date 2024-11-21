@@ -22,13 +22,6 @@ const envsSchema = joi
   .object({
     PORT: joi.number().required(),
     NATS_SERVERS: joi.array().items(joi.string()).required(),
-    DB_PASSWORD: joi.string(),
-    DB_DATABASE: joi.string(),
-    DB_HOST: joi.string(),
-    DB_PORT: joi.number(),
-    DB_USERNAME: joi.string(),
-    DB_AUTO_LOAD_ENTITIES: joi.boolean().default(true),
-    DB_SYNCHRONIZE: joi.boolean().default(false),
   })
   .unknown(true);
 
@@ -68,4 +61,3 @@ export const envsFtp = {
   ftpRoot: envVars.FTP_ROOT,
   ftpSsl: envVars.FTP_SSL,
 };
-
