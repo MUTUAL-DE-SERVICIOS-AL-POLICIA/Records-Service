@@ -11,6 +11,7 @@ interface EnvVars {
   DB_USERNAME: string;
   DB_AUTO_LOAD_ENTITIES: boolean;
   DB_SYNCHRONIZE: boolean;
+  DB_SCHEMA: string;
   FTP_HOST: string;
   FTP_USERNAME: string;
   FTP_PASSWORD: string;
@@ -20,7 +21,7 @@ interface EnvVars {
 
 const envsSchema = joi
   .object({
-    PORT: joi.number().required(),
+    PORT: joi.number().required(), 
     NATS_SERVERS: joi.array().items(joi.string()).required(),
   })
   .unknown(true);
@@ -50,8 +51,8 @@ export const DbEnvs = {
   dbHost: envVars.DB_HOST,
   dbPort: envVars.DB_PORT,
   dbUsername: envVars.DB_USERNAME,
-  dbAutoLoadEntities: envVars.DB_AUTO_LOAD_ENTITIES,
   dbSynchronize: envVars.DB_SYNCHRONIZE,
+  dbSchema: envVars.DB_SCHEMA,
 };
 
 export const envsFtp = {
