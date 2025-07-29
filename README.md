@@ -5,7 +5,7 @@
 ## Clonar el repositorio y agregarle un nombre nuevo del nuevo proyecto
 
 ```bash
-git clone https://github.com/MUTUAL-DE-SERVICIOS-AL-POLICIA/template-microservice.git nombre-microservice
+git clone https://github.com/MUTUAL-DE-SERVICIOS-AL-POLICIA/template-microservice.git nombre-service
 ```
 
 ## Inicializar proyecto
