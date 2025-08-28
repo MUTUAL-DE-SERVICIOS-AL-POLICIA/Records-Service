@@ -4,7 +4,7 @@ import { CommonModule } from './common/common.module';
 import { DatabaseModule } from './database/database.module';
 
 @Module({
-  imports: [ConfigModule.forRoot(),DatabaseModule , CommonModule],
+  imports: [ConfigModule.forRoot(), DatabaseModule, CommonModule],
   controllers: [],
   providers: [],
 })
