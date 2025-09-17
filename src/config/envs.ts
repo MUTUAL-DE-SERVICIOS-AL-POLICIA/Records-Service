@@ -14,7 +14,7 @@ interface EnvVars {
 
 const envsSchema = joi
   .object({
-    NATS_SERVERS: joi.array().items(joi.string()).required(),
+    NATS_SERVERS: joi.array().items(joi.string()),
     DB_SYNCHRONIZE: joi.string().valid('true', 'false').default('false'),
   })
   .unknown(true);
