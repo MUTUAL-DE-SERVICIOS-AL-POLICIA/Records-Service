@@ -8,7 +8,15 @@ import { RecordsKioskModule } from './records-kiosk/records-kiosk.module';
 import { RecordsAuthModule } from './records-auth/records-auth.module';
 
 @Module({
-  imports: [ConfigModule.forRoot(), DatabaseModule, CommonModule, RecordsAppMobileModule, RecordsBeneficiariesModule, RecordsKioskModule, RecordsAuthModule],
+  imports: [
+    ConfigModule.forRoot(),
+    DatabaseModule,
+    CommonModule,
+    RecordsAppMobileModule,
+    RecordsBeneficiariesModule,
+    RecordsKioskModule,
+    RecordsAuthModule,
+  ],
   controllers: [],
   providers: [],
 })
