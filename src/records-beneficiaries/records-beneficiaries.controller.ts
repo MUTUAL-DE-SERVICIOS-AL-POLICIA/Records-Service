@@ -4,7 +4,9 @@ import { MessagePattern, Payload } from '@nestjs/microservices';
 
 @Controller()
 export class RecordsBeneficiariesController {
-  constructor(private readonly recordsBeneficiariesService: RecordsBeneficiariesService) {}
+  constructor(
+    private readonly recordsBeneficiariesService: RecordsBeneficiariesService,
+  ) {}
 
   @MessagePattern('beneficiaries.record.create')
   create(
