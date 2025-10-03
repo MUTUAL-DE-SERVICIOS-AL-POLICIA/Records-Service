@@ -5,8 +5,8 @@ import {
   CreateDateColumn,
 } from 'typeorm';
 
-@Entity('recordBeneficiaries')
-export class RecordBeneficiaries {
+@Entity()
+export class RecordsAuth {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -17,7 +17,10 @@ export class RecordBeneficiaries {
   description?: string;
 
   @Column({ type: 'jsonb', nullable: true })
-  metadata?: any;
+  input: any;
+
+  @Column({ type: 'jsonb', nullable: true })
+  output: any;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
