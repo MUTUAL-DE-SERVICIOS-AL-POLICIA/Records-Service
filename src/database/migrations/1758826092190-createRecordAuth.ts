@@ -1,12 +1,10 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class CreateRecordBeneficiaries1757962412640
-  implements MigrationInterface
-{
+export class CreateRecordAuth1758826092190 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'records_beneficiaries',
+        name: 'records_auth',
         columns: [
           {
             name: 'id',
@@ -14,11 +12,6 @@ export class CreateRecordBeneficiaries1757962412640
             isPrimary: true,
             isGenerated: true,
             generationStrategy: 'increment',
-          },
-          {
-            name: 'user',
-            type: 'jsonb',
-            isNullable: true,
           },
           {
             name: 'action',
@@ -53,7 +46,6 @@ export class CreateRecordBeneficiaries1757962412640
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-
-    await queryRunner.dropTable('records_beneficiaries');
+    await queryRunner.dropTable('records_auth');
   }
 }
