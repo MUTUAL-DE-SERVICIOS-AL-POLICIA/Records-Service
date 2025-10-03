@@ -2,23 +2,20 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { RecordsBeneficiaries } from './records-beneficiaries.entity';
-import { translateAction } from "./records-beneficiaries.dictionary";
+import { translateAction } from './records-beneficiaries.dictionary';
 
 @Injectable()
 export class RecordsBeneficiariesService {
-  
   constructor(
     @InjectRepository(RecordsBeneficiaries)
     private readonly recordBeneficiariesRepository: Repository<RecordsBeneficiaries>,
   ) {}
 
-  async create(
-    action: string,
-    input?: any,
-    output?: any,
-  ): Promise<any> {
-
-    const { normalizedUser, cleanInput, cleanOutput } = this.normalizeUser(input, output);
+  async create(action: string, input?: any, output?: any): Promise<any> {
+    const { normalizedUser, cleanInput, cleanOutput } = this.normalizeUser(
+      input,
+      output,
+    );
 
     const record = this.recordBeneficiariesRepository.create({
       user: normalizedUser,
@@ -39,11 +36,19 @@ export class RecordsBeneficiariesService {
     let cleanInput: any = input;
     let cleanOutput: any = output;
 
-    if (inputUser && typeof inputUser === 'object' && !Array.isArray(inputUser)) {
+    if (
+      inputUser &&
+      typeof inputUser === 'object' &&
+      !Array.isArray(inputUser)
+    ) {
       normalizedUser = inputUser;
       const { user: _iUser, ...rest } = input;
       cleanInput = rest;
-    } else if (outputUser && typeof outputUser === 'object' && !Array.isArray(outputUser)) {
+    } else if (
+      outputUser &&
+      typeof outputUser === 'object' &&
+      !Array.isArray(outputUser)
+    ) {
       normalizedUser = outputUser;
       const { user: _oUser, ...rest } = output;
       cleanOutput = rest;
@@ -61,7 +66,4 @@ export class RecordsBeneficiariesService {
 
     return { normalizedUser, cleanInput, cleanOutput };
   }
-
 }
-
-

@@ -4,7 +4,6 @@ import { RecordsBeneficiariesController } from './records-beneficiaries.controll
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { RecordsBeneficiaries } from './records-beneficiaries.entity';
 
-
 @Module({
   imports: [TypeOrmModule.forFeature([RecordsBeneficiaries])],
   controllers: [RecordsBeneficiariesController],

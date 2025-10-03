@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { RecordsKiosk } from './records-kiosk.entity';
-import { translateAction } from "./records-kiosk.dictionary";
+import { translateAction } from './records-kiosk.dictionary';
 @Injectable()
 export class RecordsKioskService {
   constructor(
@@ -10,12 +10,7 @@ export class RecordsKioskService {
     private readonly recordKioskRepository: Repository<RecordsKiosk>,
   ) {}
 
-  async create(
-    action: string,
-    input?: any,
-    output?: any,
-  ): Promise<any> {
-
+  async create(action: string, input?: any, output?: any): Promise<any> {
     const record = this.recordKioskRepository.create({
       action,
       description: translateAction(action, input, output),
@@ -25,7 +20,4 @@ export class RecordsKioskService {
 
     return await this.recordKioskRepository.save(record);
   }
-
 }
-
-

@@ -50,17 +50,9 @@ export class CreateRecordBeneficiaries1757962412640
       }),
       true,
     );
-
-    await queryRunner.query(`
-      CREATE INDEX idx_records_beneficiaries_affiliate_id
-      ON records.records_beneficiaries (((input->'user'->>'affiliateId')::bigint));
-    `);
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(
-      `DROP INDEX IF EXISTS idx_records_beneficiaries_affiliate_id`,
-    );
 
     await queryRunner.dropTable('records_beneficiaries');
   }
