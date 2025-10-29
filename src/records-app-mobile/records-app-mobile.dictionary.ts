@@ -1,12 +1,10 @@
 export const actionMessages: Record<string, string> = {
-  'POST: AppMobileController.version':
-    'Ruta pública, se verificó la versión de la aplicación móvil.',
   'POST: AppMobileController.ecoComLivenessStore':
-    'Inició el proceso de enrolamiento y verificación para la creación de complementos económicos para el afiliado con NUP {affiliateId}',
+    'Inició el proceso de enrolamiento y verificación para la creación de complemento económico para el afiliado con NUP {affiliateId}',
   'POST: AppMobileController.ecoComEconomicComplementsStore':
-    'Creo complementos económicos para el afiliado con NUP {affiliateId}',
-  'GET: AppMobileController.ecoComSaveIdentity':
-    'Verifico la identidad del afiliado de complemento con NUP {affiliateId}',
+    'Creó complemento económico para el afiliado con NUP {affiliateId}',
+  'POST: AppMobileController.ecoComSaveIdentity':
+    'Verificó la identidad del afiliado de complemento con NUP {affiliateId}',
 };
 
 export function translateAction(
@@ -21,7 +19,7 @@ export function translateAction(
   }
 
   return template.replace(/\{(\w+)\}/g, (_, key) => {
-    const value = user?.[key] ?? output?.[key] ?? input?.params?.[key] ?? 'N/A';
+    const value = user?.[key] ?? output?.[key] ?? input?.params?.[key] ?? '';
     return String(value);
   });
 }

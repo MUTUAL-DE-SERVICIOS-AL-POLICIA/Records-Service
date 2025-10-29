@@ -25,6 +25,9 @@ export class RecordsBeneficiaries {
   @Column({ type: 'jsonb', nullable: true })
   output: any;
 
+  @Column({ type: 'bigint', nullable: true })
+  personId: number;
+
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 }

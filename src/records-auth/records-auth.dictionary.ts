@@ -24,7 +24,7 @@ export function translateAction(
       output?.data?.information?.[key] ??
       output?.user?.[key] ??
       input?.user?.[key] ??
-      'N/A';
+      '';
     return String(value);
   });
 }

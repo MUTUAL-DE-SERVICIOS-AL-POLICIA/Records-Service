@@ -6,13 +6,13 @@ export const actionMessages: Record<string, string> = {
     '{name} registró/actualizó para el afiliado con NUP {affiliateId} el expediente: {message}.',
 
   'DELETE: AffiliatesController.deleteFileDossier':
-    '{name} eliminó el expediente de afiliado con NUP {affiliateId}: {message} de la persona: {personName}.',
+    '{name} eliminó el expediente del afiliado con NUP {affiliateId}: {message}.',
 
   'POST: AffiliatesController.documentsAnalysis':
     '{name} realizó el análisis de documentos.',
 
   'POST: AffiliatesController.documentsImports':
-    '{name} realizó la importación de documentos. {newFiles} nuevos archivos, {updateFIles} archivos actualizados.',
+    '{name} realizó la importación de documentos, {message}',
 
   'POST: PersonsController.createPersonFingerprint':
     '{name} registró la huella digital para la persona con C.I. {identityCard}.',
@@ -30,7 +30,7 @@ export function translateAction(
   }
 
   return template.replace(/\{(\w+)\}/g, (_, key) => {
-    const value = user?.[key] ?? output?.[key] ?? input?.params?.[key] ?? 'N/A';
+    const value = user?.[key] ?? output?.[key] ?? input?.params?.[key] ?? '';
     return String(value);
   });
 }
