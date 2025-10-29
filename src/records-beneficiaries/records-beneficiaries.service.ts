@@ -3,15 +3,29 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { RecordsBeneficiaries } from './records-beneficiaries.entity';
 import { translateAction } from './records-beneficiaries.dictionary';
+import { NatsService } from 'src/common';
 
 @Injectable()
 export class RecordsBeneficiariesService {
   constructor(
     @InjectRepository(RecordsBeneficiaries)
     private readonly recordBeneficiariesRepository: Repository<RecordsBeneficiaries>,
+    private readonly nats: NatsService,
   ) {}
 
   async create(action: string, input?: any, output?: any): Promise<any> {
+    const { params } = input || {};
+    let personId = null;
+
+    if (params && params.personId) {
+      personId = params.personId;
+    } else if(params && params.affiliateId) {
+      const response = await this.nats.firstValue('affiliate.affiliateIdForPersonId', {
+        affiliateId: params.affiliateId,
+      });
+      personId = response.personId;
+    }
+
     const { normalizedUser, cleanInput, cleanOutput } = this.normalizeUser(
       input,
       output,
@@ -23,6 +37,7 @@ export class RecordsBeneficiariesService {
       description: translateAction(action, normalizedUser, cleanInput, output),
       input: cleanInput,
       output: cleanOutput,
+      personId,
     });
 
     return await this.recordBeneficiariesRepository.save(record);
