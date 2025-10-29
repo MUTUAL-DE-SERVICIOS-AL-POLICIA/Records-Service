@@ -18,7 +18,7 @@ export function translateAction(
   }
 
   return template.replace(/\{(\w+)\}/g, (_, key) => {
-    const value = user?.[key] ?? output?.[key] ?? input?.params?.[key] ?? 'N/A';
+    const value = user?.[key] ?? output?.[key] ?? input?.params?.[key] ?? '';
     return String(value);
   });
 }
