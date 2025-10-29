@@ -48,36 +48,9 @@ export class CreateRecordAppMobile1757954840839 implements MigrationInterface {
       }),
       true,
     );
-
-    await queryRunner.query(`
-        CREATE INDEX idx_records_app_mobile_person_id
-        ON records.records_app_mobile ((( "user"->>'personId')::bigint));
-    `);
-
-    await queryRunner.query(`
-        CREATE INDEX idx_records_app_mobile_affiliate_id
-        ON records.records_app_mobile ((( "user"->>'affiliateId')::bigint));
-    `);
-
-    await queryRunner.query(`
-        CREATE INDEX idx_records_app_mobile_person_affiliate
-        ON records.records_app_mobile (
-            (( "user"->>'personId')::bigint),
-            (( "user"->>'affiliateId')::bigint)
-        );
-    `);
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(
-      `DROP INDEX IF EXISTS idx_records_app_mobile_person_affiliate`,
-    );
-    await queryRunner.query(
-      `DROP INDEX IF EXISTS idx_records_app_mobile_affiliate_id`,
-    );
-    await queryRunner.query(
-      `DROP INDEX IF EXISTS idx_records_app_mobile_person_id`,
-    );
 
     await queryRunner.dropTable('records_app_mobile');
   }
