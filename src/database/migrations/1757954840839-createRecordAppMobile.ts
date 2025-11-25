@@ -51,7 +51,6 @@ export class CreateRecordAppMobile1757954840839 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-
     await queryRunner.dropTable('records_app_mobile');
   }
 }
