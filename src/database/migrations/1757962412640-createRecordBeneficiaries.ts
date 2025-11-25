@@ -53,7 +53,6 @@ export class CreateRecordBeneficiaries1757962412640
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-
     await queryRunner.dropTable('records_beneficiaries');
   }
 }
