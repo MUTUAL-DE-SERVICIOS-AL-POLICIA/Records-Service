@@ -15,20 +15,14 @@ export class RecordsBeneficiariesService {
 
   async create(action: string, input?: any, output?: any): Promise<any> {
     const { params } = input || {};
-    const { error } = output || false;
     let personId = null;
-
-    if (error) return;
 
     if (params && params.personId) {
       personId = params.personId;
-    } else if (params && params.affiliateId) {
-      const response = await this.nats.firstValue(
-        'affiliate.affiliateIdForPersonId',
-        {
-          affiliateId: params.affiliateId,
-        },
-      );
+    } else if(params && params.affiliateId) {
+      const response = await this.nats.firstValue('affiliate.affiliateIdForPersonId', {
+        affiliateId: params.affiliateId,
+      });
       personId = response.personId;
     }
 
@@ -47,20 +41,6 @@ export class RecordsBeneficiariesService {
     });
 
     return await this.recordBeneficiariesRepository.save(record);
-  }
-
-  async findPerson(personId: number): Promise<any> {
-    const records = await this.recordBeneficiariesRepository.find({
-      where: { personId },
-      order: { createdAt: 'DESC' },
-      select: {
-        id: true,
-        action: true,
-        description: true,
-        createdAt: true,
-      },
-    });
-    return records;
   }
 
   private normalizeUser(input?: any, output?: any) {

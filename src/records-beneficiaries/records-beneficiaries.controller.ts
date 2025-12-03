@@ -1,4 +1,4 @@
-import { Controller, ParseIntPipe } from '@nestjs/common';
+import { Controller } from '@nestjs/common';
 import { RecordsBeneficiariesService } from './records-beneficiaries.service';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 
@@ -15,10 +15,5 @@ export class RecordsBeneficiariesController {
     @Payload('output') output: any,
   ) {
     return this.recordsBeneficiariesService.create(action, input, output);
-  }
-
-  @MessagePattern('beneficiaries.record.findPerson')
-  findPerson(@Payload('personId', ParseIntPipe) personId: number) {
-    return this.recordsBeneficiariesService.findPerson(personId);
   }
 }
