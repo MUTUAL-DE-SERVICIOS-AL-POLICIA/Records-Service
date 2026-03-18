@@ -1,50 +1,64 @@
+# Records-Service
+
 ## Descripción
 
-[Nest] Plantilla para crear nuevos proyectos enfocado a micro servicios.
+**Records-Service** es un microservicio que gestiona el archivo y registro de documentos de la plataforma.
+
+Maneja datos como:
+- Gestión de expedientes y dossiers
+- Archivo de registros históricos
+- Búsqueda y recuperación de documentos
+- Auditoría de registros
+
+---
 
 ## Clonar el repositorio y agregarle un nombre nuevo del nuevo proyecto
 
 ```bash
-git clone https://github.com/MUTUAL-DE-SERVICIOS-AL-POLICIA/template-microservice.git nombre-service
+git clone https://github.com/MUTUAL-DE-SERVICIOS-AL-POLICIA/Records-Service.git nombre-records-service
 ```
 
 ## Inicializar proyecto
 
 ```bash
 # Entrar al repositorio clonado con el nuevo nombre del proyecto
-cd nombre-microservice
+cd nombre-records-service
 
-# Elimina el origen remoto actual,
+# Elimina el origen remoto actual
 git remote remove origin
 
-# Crear el archivo .env en base al .env.example
-cp .env.example .env
+# Crear el archivo .env en base al .env.template
+cp .env.template .env
 
 # Instalar las dependencias
-yarn install
+pnpm install
 
 # Correr proyecto en modo desarrollo
-yarn run start:dev
+pnpm start:dev
 
-# Crear nuevo Modulo
+# Crear nuevo Módulo
 nest g res nombreModulo
 
 # Crear un seeder
-yarn seed:create --name src/database/seeds/nombre_seed.ts
+pnpm seed:create --name src/database/seeds/nombre_seed.ts
+
 # Correr seeder
-yarn seed:run --name src/database/seeds/{code}-nombre_seed.ts
+pnpm seed:run --name src/database/seeds/{code}-nombre_seed.ts
 
 # Crear migración
-yarn typeorm migration:create src/database/migrations/NombreDeLaMigración
+pnpm typeorm migration:create src/database/migrations/NombreDeLaMigración
+
 # Correr migración
-yarn migration:run
+pnpm migration:run
+
 # Revertir migración
-yarn migration:revert
+pnpm migration:revert
+
 # Ver estado de migraciones
-yarn migration:show
+pnpm migration:show
 
 # Para enlazar a un nuevo repositorio
-git remote add origin https://github.com/tu-usuario/{nombre_nuevo-microservice}.git
+git remote add origin https://github.com/tu-usuario/{nombre-records-service}.git
 git add .
 git commit -m "Inicialización del nuevo proyecto"
 git branch -M main
