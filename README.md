@@ -2,7 +2,7 @@
 
 ## Descripción
 
-**Records-Service** es un microservicio que gestiona el archivo y registro de documentos de la plataforma.
+**Records-Service** es el servicio que guarda, organiza y recupera todos los documentos y registros de la plataforma. Funciona como un archivo central seguro donde se almacena toda la información documentaria de forma ordenada y con protección.
 
 Maneja datos como:
 - Gestión de expedientes y dossiers
