@@ -2,13 +2,50 @@
 
 ## Descripción
 
-**Records-Service** es el servicio que guarda, organiza y recupera todos los documentos y registros de la plataforma. Funciona como un archivo central seguro donde se almacena toda la información documentaria de forma ordenada y con protección.
+**Records-Service** es el servicio especializado que guarda, organiza y recupera todos los documentos y registros de la plataforma. Funciona como un archivo central seguro donde se almacena toda la información documentaria de forma ordenada y con protección. Forma parte de una arquitectura de microservicios basada en **NestJS** y utiliza **NATS** para la comunicación asincrónica entre servicios.
 
 Maneja datos como:
 - Gestión de expedientes y dossiers
 - Archivo de registros históricos
 - Búsqueda y recuperación de documentos
-- Auditoría de registros
+- Auditoría y trazabilidad de registros
+- Clasificación y categorización de documentos
+- Control de acceso a información sensible
+
+---
+
+## Estructura del Proyecto
+
+```
+src/
+├── app.module.ts                 # Módulo raíz que organiza todos los módulos de la aplicación
+├── main.ts                       # Punto de entrada principal de la aplicación
+├── records/                      # Módulo principal de gestión de registros
+│   ├── controllers/              # Controladores que manejan consultas y gestión
+│   ├── services/                 # Servicios con la lógica de almacenamiento
+│   └── dto/                      # Data Transfer Objects para validación de datos
+├── documents/                    # Módulo de gestión de documentos
+│   ├── controllers/              # Controladores para subida y descarga
+│   ├── services/                 # Servicios de procesamiento de documentos
+│   └── dto/                      # Validación de datos de documentos
+├── search/                       # Módulo de búsqueda y recuperación
+│   ├── controllers/              # Controladores de búsqueda avanzada
+│   ├── services/                 # Servicios de indexación y búsqueda
+│   └── dto/                      # Filtros y criterios de búsqueda
+├── audit/                        # Módulo de auditoría y trazabilidad
+│   ├── services/                 # Servicios de registro de accesos
+│   └── dto/                      # Validación de datos de auditoría
+├── common/                       # Código compartido reutilizable en toda la aplicación
+│   ├── filters/                  # Filtros para manejo de excepciones
+│   ├── guards/                   # Guards para proteger acceso
+│   └── decorators/               # Decoradores personalizados
+├── config/                       # Archivos de configuración (BD, variables ENV, etc)
+│   └── database.config.ts        # Configuración específica de PostgreSQL
+├── database/                     # Gestión de base de datos, migraciones y datos iniciales
+│   ├── migrations/               # Migraciones TypeORM para cambios en el esquema BD
+│   ├── seeds/                    # Seeders para llenar BD con datos de prueba
+│   └── entities/                 # Entidades (modelos) que representan tablas de la BD
+```
 
 ---
 
