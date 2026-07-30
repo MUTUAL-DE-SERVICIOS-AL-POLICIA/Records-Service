@@ -1,6 +1,6 @@
 export const actionMessages: Record<string, string> = {
-  'POST: AffiliatesController.createOrUpdateDocumentt': `{message} por {name}.`,
-
+  'POST: AffiliatesController.createAffiliateDocument': `{message} por {name}.`,
+  'PATCH: AffiliatesController.updateAffiliateDocument': `{message} por {name}.`,
   'POST: AffiliatesController.createOrUpdateFileDossier':
     '{message} por {name}.',
 
