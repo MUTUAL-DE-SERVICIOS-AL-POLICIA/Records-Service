@@ -16,9 +16,4 @@ export class RecordsAppMobileController {
   ) {
     return this.recordsAppMobileService.create(action, input, output);
   }
-
-  // @MessagePattern('records.findAllAppMobile')
-  // findAllAppMobile(@Payload('affiliateId', ParseIntPipe) affiliateId: number) {
-  //   return this.recordsAppMobileService.findAllAppMobile(affiliateId);
-  // }
 }

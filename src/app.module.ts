@@ -6,6 +6,7 @@ import { RecordsAppMobileModule } from './records-app-mobile/records-app-mobile.
 import { RecordsBeneficiariesModule } from './records-beneficiaries/records-beneficiaries.module';
 import { RecordsKioskModule } from './records-kiosk/records-kiosk.module';
 import { RecordsAuthModule } from './records-auth/records-auth.module';
+import { RecordsSalesModule } from './records-sales/records-sales.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { RecordsAuthModule } from './records-auth/records-auth.module';
     RecordsBeneficiariesModule,
     RecordsKioskModule,
     RecordsAuthModule,
+    RecordsSalesModule,
   ],
   controllers: [],
   providers: [],
